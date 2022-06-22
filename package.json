@@ -1,0 +1,105 @@
+{
+  "name": "vscode-i18n-accessor-decorator",
+  "displayName": "",
+  "description": "",
+  "version": "0.0.1",
+  "publisher": "mosle",
+  "engines": {
+    "vscode": "^1.68.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:vue"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "sgI18nDecorator.toggle",
+        "title": "toggle i18n"
+      },
+      {
+        "command": "sgI18nDecorator.reload",
+        "title": "reload i18n"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "sgI18nDecorator.toggle",
+          "group": "navigation",
+          "when": " editorLangId == vue "
+        }
+      ]
+    },
+    "configuration": {
+      "title": "i18n-accessor decorator",
+      "properties": {
+        "sgI18n.showDecorator": {
+          "title": "show / hide decorator",
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "show decorator"
+        },
+        "sgI18n.forceTargetFuncName": {
+          "title": "target function names(json)",
+          "type": "string",
+          "default": "{\"$t\":0,\"t\":0,\"i18n\":1}",
+          "markdownDescription": "Specify func names to show decorator with json format.    ie:{funcname:argumentIndex(number)}"
+        },
+        "sgI18n.jsonDictionaries": {
+          "title": "language files",
+          "type": "string",
+          "default": "locales/*.json",
+          "markdownDescription": "Specify dictionary files"
+        },
+        "sgI18n.baseJsonFile": {
+          "title": "base language files",
+          "type": "string",
+          "default": "ja.json",
+          "markdownDescription": "Specify base json file name in 'language files' set above."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "typescript": "^4.7.2"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "16.x",
+    "@types/sanitize-html": "^2.6.2",
+    "@types/throttle-debounce": "^5.0.0",
+    "@types/vscode": "^1.68.0",
+    "@typescript-eslint/eslint-plugin": "^5.27.0",
+    "@typescript-eslint/parser": "^5.27.0",
+    "@vscode/test-electron": "^2.1.3",
+    "eslint": "^8.16.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.0.0",
+    "nodemon": "^2.0.16",
+    "ts-loader": "^9.3.0",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "@originjs/vue-sfc-ast-parser": "^1.0.2",
+    "ajv": "^8.11.0",
+    "json5": "^2.2.1",
+    "sanitize-html": "^2.7.0",
+    "throttle-debounce": "^5.0.0",
+    "typescript": "^4.7.3"
+  }
+}
