@@ -4,6 +4,10 @@
   "description": "",
   "version": "0.0.1",
   "publisher": "mosle",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mosle/vscode-i18n-accessor-decorator"
+  },
   "engines": {
     "vscode": "^1.68.0"
   },
