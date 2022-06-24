@@ -77,7 +77,7 @@ export function activate(context: vscode.ExtensionContext) {
       const langs = Object.keys(dictionaries);
 
       const action = new vscode.MarkdownString(`[[reload](command:sgI18nDecorator.reload)] 
-      [[setting](command:workbench.action.openSettings?%5B%22@ext:mosle.sg-i18n-decorator%22%5D)]`);
+      [[setting](command:workbench.action.openSettings?%5B%22@ext:mosle.vscode-i18n-accessor-decorator%22%5D)]`);
       action.isTrusted = true;
 
       if (calls && calls.length > 0) {
